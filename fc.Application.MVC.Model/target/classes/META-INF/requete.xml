@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_2_0.xsd" version="2.0">  
+    <named-query name="listCustomers">
+        <query>SELECT c FROM Customers c </query>
+    </named-query>
+     <named-query name="customersFromId">
+        <query>SELECT c FROM Customers c WHERE c.id LIKE :custId </query>
+    </named-query>
+    <named-query name="listOrders">
+        <query>SELECT o FROM Orders o WHERE o.customers.id LIKE :custName   </query>
+    </named-query>
+     <named-query name="allIdOrder">
+        <query>Select o.id FROM Orders o   </query>
+    </named-query>
+     <named-query name="listOrdersDetails">
+        <query>SELECT d FROM OrderDetails d WHERE d.orders.id LIKE :order   </query>
+    </named-query>
+      <named-query name="ordersStatusFromOrderDetails">
+        <query>SELECT s.orderDetailsStatus FROM OrderDetails s WHERE s.id LIKE :idOrder   </query>
+    </named-query>
+    <named-query name="listProduct">
+        <query>SELECT p  FROM Products p WHERE p.id LIKE :idDetailsOrder   </query>
+    </named-query>
+    <named-query name="test">
+        <query>Select o.products FROM OrderDetails o  WHERE o.id LIKE :idDetailsOrder  </query>
+    </named-query>
+</entity-mappings>
